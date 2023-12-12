@@ -1,0 +1,40 @@
+.inputfield{
+    margin: 3px;
+    padding: 5px;
+    padding-left: 11px;
+    border-radius: 15px;
+    cursor: text;
+    border:1px rgb(105, 98, 98) solid;
+    outline: none;
+
+    &:focus{
+        border: 1px blue solid;
+    }
+}
+
+#iframeInput{
+    width: 31vw;
+}
+
+.btn{
+    background-color: rgb(17, 23, 189);
+    color: white;
+    padding: 7px;
+    margin: 3px;
+    font-size: 15px;
+    border-radius: 15px;
+    border:none;
+    &:hover{
+        background-color: rgb(15, 10, 160);
+        font-weight: bold;
+        cursor: pointer;
+    }
+}
+
+.iframe-container{
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap:5px;
+}

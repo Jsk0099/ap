@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.nav-container{
+    border:1px red solid;
+    margin-bottom: 3px;
+}
+li{
+    list-style-type: none;
+    display: inline-block;
+
+    button{
+        border-radius: 15px;
+        background-color: white;
+        color: black;
+        margin: 3px;
+        border: 1px white solid;
+        padding: 9px;
+        font-size: 15px;
+        
+        &:hover{
+            background-color: aliceblue;
+            cursor: pointer;
+            border-bottom: 1px blue solid;
+        }
+    }
+
+}

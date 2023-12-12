@@ -1,0 +1,10 @@
+<input class="inputfield" type="text" id="iframeInput">
+<button class="btn" (click)="addIframe()" >Add Iframe</button>
+<button class="btn" (click)="editWidth()">editWidth</button>
+<div class="iframe-container">
+  <ng-container *ngFor="let item of iframeListing">
+    <div class="iframes" [innerHTML]="item">
+    </div>
+  </ng-container>
+</div>
+
