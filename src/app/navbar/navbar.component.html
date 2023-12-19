@@ -1,7 +1,7 @@
 <div class="nav-container" *ngIf="navigationList.length">
     <ul>
-      <li *ngFor="let item of navigationList">
-        <button (click)="navigate(item.path)">{{ item.displayName }}</button>
+      <li *ngFor="let item of navigationList;let i=index">
+        <button class="nav-btn" (click)="navigate(item.path,$event)">{{ item.displayName }}</button>
       </li>
     </ul>
   </div>

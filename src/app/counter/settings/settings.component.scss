@@ -1,0 +1,24 @@
+#settings-container{
+    padding: 5px;
+    width:450px;
+    .header{
+        background-color: blue;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        .heading{
+            font-size: 21px;
+            font-weight: 500;
+        }
+    }
+    .body{
+        padding: 3px;
+    }
+    .footer{
+        display: flex;
+        justify-content: end;
+        .btn-save{
+            margin-right: 5px;
+        }
+    }
+}

@@ -3,27 +3,33 @@
     padding: 0;
 }
 .nav-container{
-    border:1px red solid;
+    background-color: #4421b3;
     margin-bottom: 3px;
 }
 li{
     list-style-type: none;
     display: inline-block;
 
-    button{
+    .nav-btn{
         border-radius: 15px;
-        background-color: white;
-        color: black;
+        background-color: transparent;
+        color: white;
         margin: 3px;
-        border: 1px white solid;
+        border: 1px transparent solid;
         padding: 9px;
         font-size: 15px;
         
         &:hover{
-            background-color: aliceblue;
+            color:rgb(229, 197, 197);
             cursor: pointer;
-            border-bottom: 1px blue solid;
+            border-bottom: 1px rgb(255, 156, 156) solid;
         }
+
+        &.active{
+            color:rgb(144, 221, 240);
+            border-bottom: 1px rgb(251, 251, 251) solid;
+        }
+
     }
 
 }

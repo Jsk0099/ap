@@ -1,0 +1,11 @@
+<ng-container>
+    <div class="right-icon" title="Settings" (click)="openSettingModal()"><i class="fa fa-gear"></i></div>
+    <div id="counter-container" (click)="isTouchDevice || increment()" (touchend)="isTouchDevice && increment()">
+        <div id="title" contentEditable="true" (keydown)="validateInput($event)" (blur)="onTitleChange($event)" [innerHTML]="title"></div>
+        <div *ngIf="isManual" class="btn-container">
+            <button class="btn" *ngIf="counter>0" (click)="saveCounter()">Save</button>
+            <button class="btn" *ngIf="isResume" (click)="resumeCounter()">Resume</button>
+        </div>
+        <div id="counter"> {{counter}} </div>
+    </div>
+</ng-container>

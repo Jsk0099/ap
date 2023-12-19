@@ -1,0 +1,14 @@
+<div id="settings-container">
+    <div class="header">
+        <div title="Settings" class="heading">Settings</div>
+       <div title="Close" (click)="cancel()" class="btn"><i class="fa fa-close"></i></div>
+    </div>
+    <div class="body">
+        <label for="mBtn">Manual Save Button Enable : </label>
+        <input type="checkbox" class="btn" value="{{configObj.isManual}}" name="mBtn" id="mBtn" [checked]="configObj.isManual" (change)="setMBtn($event)"/> 
+    </div>
+    <div class="footer">
+        <button class="btn btn-save" (click)="save()">Save</button>
+        <button title="Close" class="btn" (click)="cancel()">Cancel</button>
+    </div>
+</div>

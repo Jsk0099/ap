@@ -23,17 +23,34 @@ export class MultipleIframeComponent implements OnInit, OnDestroy {
     // }
   }
 
+  makeIframeLink(link:string){
+    if(link.indexOf('youtu')){
+      link = link.slice(link.lastIndexOf('/'));
+      let str = `<iframe width="560" height="315" src="https://www.youtube.com/embed${link}&autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
+      this.iframeListing.push(
+        this.sanitizer.bypassSecurityTrustHtml(str)
+      );
+    }else{
+      alert('Please Add Valid Link');
+    }
+  }
+
   addIframe() {
     let iframe: HTMLInputElement = document.getElementById(
       'iframeInput'
     ) as HTMLInputElement;
+
+    if(iframe.value && iframe.value.indexOf('iframe') < 0){
+      this.makeIframeLink(iframe.value);
+      return;
+    }
 
     if(this.iframeListing.length >= 1){
       iframe.value && this.iframeListing.push(
         this.sanitizer.bypassSecurityTrustHtml(iframe.value.indexOf('youtube') ? this.addMutedAutoplay(iframe.value) : iframe.value)
       );
     }else{
-      this.iframeListing[0] = this.sanitizer.bypassSecurityTrustHtml(iframe.value.indexOf('youtube') ? this.addMutedAutoplay(iframe.value) : iframe.value);
+      this.iframeListing[0] = this.sanitizer.bypassSecurityTrustHtml(iframe.value.indexOf('youtu') ? this.addMutedAutoplay(iframe.value) : iframe.value);
     }
   }
 

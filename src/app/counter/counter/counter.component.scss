@@ -1,0 +1,24 @@
+#counter-container{
+    height: calc(100vh - 5.375vh);
+    border: 1px red solid;
+
+    #title{
+        font-size: 21px;
+        text-align: center;
+        min-width:35px;
+    }
+    .btn-container{
+        display: flex;
+        justify-content: space-around;
+    }
+    #counter{
+        text-align: center;
+        font-size: 25px;
+        color:orange;
+    }
+}
+.right-icon{
+    cursor: pointer;
+    float: right;
+    margin:3px 3px 0 0;
+}

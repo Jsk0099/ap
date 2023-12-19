@@ -13,13 +13,23 @@ export class NavbarComponent {
   constructor(private router:Router){ }
 
   ngOnInit(){
+    console.log('Nav Load');
     this.navigationList = [
       {displayName:'Dashboard',path:'dashboard'},
       {displayName:'Multiple Iframes',path:'multiple-iframe'},
+      {displayName:'Counter',path:'counter'},
     ]
-  }
+  };
 
-  navigate(path:string){
+  ngAfterViewInit(){
+    console.log('elem: ',document.getElementsByClassName('nav-btn')[0])
+    document.getElementsByClassName('nav-btn')[0].classList.add('active');
+  };
+
+  navigate(path:string,i:any){
+    let predElem = document.getElementsByClassName('active')[0];
+    predElem.classList.remove('active');
+    i.target.classList.add('active');
     this.router.navigate([`${path}`]);
   }
 
