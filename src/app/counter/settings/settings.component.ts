@@ -16,7 +16,7 @@ export class SettingsComponent {
 
   ngOnInit(){
     console.log('modalData: ',this.data)
-    this.configObj.isManual = this.data.isManual;
+    this.configObj = this.data;
   }
 
   cancel(){
@@ -25,11 +25,19 @@ export class SettingsComponent {
 
   setMBtn(event:any){
     this.configObj.isManual = event.target.checked;
-    this.localStorageService.setData('isManual',event.target.checked);
+  };
+
+  setDBtn(event:any){
+    this.configObj.duration = event.target.value;
+  };
+
+  setTBtn(event:any){
+    this.configObj.title = event.target.value;
   }
 
   save(){
-    console.log('configObj: ',this.configObj)
+    console.log('configObj: ',this.configObj);
+    this.localStorageService.setData('configObj',JSON.stringify(this.configObj));
     this.dataToSend.emit(this.configObj);
     this.cancel();
     // this.localStorageService.setData('','');

@@ -1,20 +1,27 @@
 #settings-container{
-    padding: 5px;
     width:450px;
     .header{
+        padding: 5px;
         background-color: blue;
         color: white;
         display: flex;
         justify-content: space-between;
-        .heading{
+        font-size: 21px;
+        .btn-close{
+            background-color: transparent;
+            border: none;
+            color: white;
             font-size: 21px;
+        }
+        .heading{
             font-weight: 500;
         }
     }
     .body{
-        padding: 3px;
+        padding: 8px;
     }
     .footer{
+        padding: 5px;
         display: flex;
         justify-content: end;
         .btn-save{
@@ -22,3 +29,5 @@
         }
     }
 }
+
+

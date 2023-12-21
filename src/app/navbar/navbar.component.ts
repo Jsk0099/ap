@@ -15,15 +15,17 @@ export class NavbarComponent {
   ngOnInit(){
     console.log('Nav Load');
     this.navigationList = [
-      {displayName:'Dashboard',path:'dashboard'},
-      {displayName:'Multiple Iframes',path:'multiple-iframe'},
-      {displayName:'Counter',path:'counter'},
+      {displayName:'Dashboard',id:'dashboard',path:'dashboard'},
+      {displayName:'Multiple Iframes',id:'multiple-iframe',path:'multiple-iframe'},
+      {displayName:'Counter',id:'counter',path:'counter'},
     ]
   };
 
   ngAfterViewInit(){
-    console.log('elem: ',document.getElementsByClassName('nav-btn')[0])
-    document.getElementsByClassName('nav-btn')[0].classList.add('active');
+    let loc = window.location.href;
+    loc = loc.slice(loc.lastIndexOf('/')+1);
+    document.getElementById(loc)?.classList.add('active');
+    // document.getElementsByClassName('nav-btn')[0].classList.add('active');
   };
 
   navigate(path:string,i:any){

@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnDestroy,OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CommonService } from 'src/app/shared/services/common.service';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
@@ -9,24 +9,31 @@ import { SettingsComponent } from '../settings/settings.component';
   templateUrl: './counter.component.html',
   styleUrls: ['./counter.component.scss']
 })
-export class CounterComponent implements OnInit {
+export class CounterComponent implements OnInit, OnDestroy {
 
-  title = 'Jay Shree Krishna';
+  title:string;
   isTouchDevice = false;
   counter = 0;
+  timeOut:any;
   isResume = false;
-  isManual = false;
+  configData: any = {};
 
-  constructor(private localStorageService:LocalStorageService, private common:CommonService, private dialog:MatDialog){  }
-
-  ngOnInit(){
-    this.localStorageService.getData('title') ? (this.title = this.localStorageService.getData('title') as string) : '' ; 
+  constructor(private localStorageService:LocalStorageService, private common:CommonService, private dialog:MatDialog){ 
     this.isTouchDevice = this.common.isTouchDevice();
-    this.isManual = this.localStorageService.getData('isManual') ? true : false;
+    this.configData = this.localStorageService.getData('configObj') ? JSON.parse(this.localStorageService.getData('configObj') as string) : {} ;
+    this.title = this.configData.title || 'Jay Shree Krishna';
     if(this.localStorageService.getData('counter')){
       this.counter = parseInt(this.localStorageService.getData('counter') as string);
       this.isResume = true;
     }
+   }
+
+  ngOnInit(){
+ 
+  }
+
+  ngOnDestroy(){
+    this.timeOut && clearTimeout(this.timeOut);
   }
 
   validateInput(event:any){
@@ -39,10 +46,9 @@ export class CounterComponent implements OnInit {
 
   onTitleChange(event: any): void {
     if(event.target.innerText.length>0 && event.target.innerText.length <= 50){
-      this.title = event.target.innerText;
-      this.localStorageService.setData('title',this.title);
+      this.localStorageService.setData('title',event.target.innerText);
     }else{
-      this.title = this.localStorageService.getData('title') as string;
+      document.getElementById('title')!.innerHTML = this.title;
       alert('Please Enter Valid Title');
     };
   };
@@ -60,7 +66,19 @@ export class CounterComponent implements OnInit {
     this.isResume = true;
   }
 
+  resetCounter(){
+    event?.stopPropagation(); 
+    event?.preventDefault();
+    this.counter = 0;
+    this.isResume = false;
+    this.localStorageService.setData('counter',this.counter);
+  }
+
   increment(){
+    if(!this.configData.isManual){
+      this.timeOut && clearTimeout(this.timeOut);
+      this.timeOut = setTimeout(this.saveCounter.bind(this), this.configData.duration ? this.configData.duration*1000 : 1000);
+    }
     this.counter++;
   };
 
@@ -69,12 +87,11 @@ export class CounterComponent implements OnInit {
       panelClass:'dialog-panel',
       disableClose: true,
       autoFocus: false,
-      data:{ isManual:this.isManual}
+      data:this.configData
     });
 
     ref.componentInstance.dataToSend.subscribe((data)=>{
-      console.warn(data);
-      this.isManual = data.isManual;
+      this.configData = data;
     })
   }
 
