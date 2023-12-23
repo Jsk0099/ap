@@ -26,7 +26,7 @@ export class MultipleIframeComponent implements OnInit, OnDestroy {
   makeIframeLink(link:string){
     if(link.indexOf('youtu')){
       link = link.slice(link.lastIndexOf('/'));
-      let str = `<iframe width="560" height="315" src="https://www.youtube.com/embed${link}&autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
+      let str = `<iframe width="${this.adjustWidth()}" height="315" src="https://www.youtube.com/embed${link}&autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`
       this.iframeListing.push(
         this.sanitizer.bypassSecurityTrustHtml(str)
       );
@@ -51,6 +51,15 @@ export class MultipleIframeComponent implements OnInit, OnDestroy {
       );
     }else{
       this.iframeListing[0] = this.sanitizer.bypassSecurityTrustHtml(iframe.value.indexOf('youtu') ? this.addMutedAutoplay(iframe.value) : iframe.value);
+    }
+  }
+
+
+  adjustWidth(){
+    if(window.outerWidth < 560){
+      return window.outerWidth - 5;
+    }else{
+      return 560;
     }
   }
 

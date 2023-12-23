@@ -24,7 +24,7 @@ export class NavbarComponent {
   ngAfterViewInit(){
     let loc = window.location.href;
     loc = loc.slice(loc.lastIndexOf('/')+1);
-    document.getElementById(loc)?.classList.add('active');
+    document.getElementById(loc ? loc : 'dashboard')!.classList.add('active');
     // document.getElementsByClassName('nav-btn')[0].classList.add('active');
   };
 
