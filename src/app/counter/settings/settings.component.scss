@@ -28,6 +28,13 @@
             margin-right: 5px;
         }
     }
+
+    @media screen and (max-width:661px) {
+        width: initial;
+        .body{
+            padding: 23px;
+        }
+    }
 }
 
 
