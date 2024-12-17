@@ -9,6 +9,10 @@
     text-align: center;
     font-size: 25px;
 }
+#fullscreen-ele{
+    background-color: white;
+    overflow-y: auto;
+}
 #counter-container{
     height: 87vh;
 
@@ -37,15 +41,16 @@
         font-size: 34px;
         color:orange;
         font-weight: 700;
-        -webkit-user-select: none; /* Safari */
-        -ms-user-select: none; /* IE 10 and IE 11 */
-        user-select: none; /* Standard syntax */
     }
 }
 .right-icon{
     cursor: pointer;
     float: right;
-    margin:3px 7px 0 0;
+    margin: 3px 7px 0 0;
+   
+}
+
+.spin{
     &:hover{
         animation: rotate-icon 1s linear infinite;
     }
@@ -54,3 +59,10 @@
 @keyframes rotate-icon {
     100% {transform: rotate(360deg);}
 }
+
+.prevent-select {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+  

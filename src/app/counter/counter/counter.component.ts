@@ -1,4 +1,4 @@
-import { Component,OnDestroy,OnInit } from '@angular/core';
+import { Component,ElementRef,OnDestroy,OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CommonService } from 'src/app/shared/services/common.service';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
@@ -15,6 +15,7 @@ export class CounterComponent implements OnInit, OnDestroy {
   isTouchDevice = false;
   counter = 0;
   timeOut:any;
+  isFullScreen = false;
   isResume = false;
   configData: any = {};
 
@@ -30,6 +31,16 @@ export class CounterComponent implements OnInit, OnDestroy {
 
   ngOnInit(){
  
+  }
+
+  toggleFullScreen(){
+    if(document.fullscreenElement){
+      document.exitFullscreen();
+      this.isFullScreen = false;
+    } else {
+      document.getElementById('fullscreen-ele')?.requestFullscreen();
+      this.isFullScreen = true;
+    }
   }
 
   ngOnDestroy(){
