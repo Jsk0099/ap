@@ -15,8 +15,8 @@ export class SettingsComponent {
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<SettingsComponent>,private localStorageService:LocalStorageService){ }
 
   ngOnInit(){
-    console.log('modalData: ',this.data)
-    this.configObj = this.data;
+    // console.log('modalData: ',this.data)
+    this.configObj = JSON.parse(JSON.stringify(this.data));
   }
 
   cancel(){
@@ -35,8 +35,20 @@ export class SettingsComponent {
     this.configObj.title = event.target.value;
   }
 
+  setGoal(event:any){
+    this.configObj.goal = event.target.value;
+  }
+
+  setVibrate(event:any){
+    this.configObj.isVibrate = event.target.checked;
+  }
+
+  setAudio(event:any){
+    this.configObj.isAudio = event.target.checked;
+  }
+
   save(){
-    console.log('configObj: ',this.configObj);
+    // console.log('configObj: ',this.configObj);
     this.localStorageService.setData('configObj',JSON.stringify(this.configObj));
     this.dataToSend.emit(this.configObj);
     this.cancel();

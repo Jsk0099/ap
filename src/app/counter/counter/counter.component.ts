@@ -91,6 +91,15 @@ export class CounterComponent implements OnInit, OnDestroy {
       this.timeOut = setTimeout(this.saveCounter.bind(this), this.configData.duration ? this.configData.duration*1000 : 1000);
     }
     this.counter++;
+    if(this.configData.goal > 0 && this.configData.goal == this.counter){
+      if(this.configData.isVibrate && navigator.vibrate){
+        navigator.vibrate(200);
+      }
+      if(this.configData.isAudio){
+        let audio = new Audio('assets/audios/bell.mp3');
+        audio.play();
+      }
+    }
   };
 
   openSettingModal(){

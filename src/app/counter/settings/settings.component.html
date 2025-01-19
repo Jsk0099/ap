@@ -13,6 +13,15 @@
         <label for="titleBtn">Change Title : </label>
         <input type="text" required [value]="configObj.title ? configObj.title : 'Jay Shree Krishna'" name="titleBtn" id="titleBtn" (blur)="setTBtn($event)"/>
         <br><br>
+        <label for="goalCounter">Set Goal : </label>
+        <input type="number" required min="1" [value]="configObj.goal ? configObj.goal : 0" name="goalCounter" id="goalCounter" (blur)="setGoal($event)"/>
+        <br><br>
+        <label for="VibBtn">Vibrate on Goal reached : </label>
+        <input type="checkbox" class="btn" name="VibBtn" id="VibBtn" [checked]="configObj.isVibrate" (change)="setVibrate($event)"/> 
+        <br><br>
+        <label for="audiooBtn">Play Audio on Goal reached : </label>
+        <input type="checkbox" class="btn" name="audiooBtn" id="audiooBtn" [checked]="configObj.isAudio" (change)="setAudio($event)"/> 
+        <br><br>
     </div>
     <div class="footer">
         <button class="btn btn-save default-btn" title="Save" (click)="save()">Save</button>
