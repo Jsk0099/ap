@@ -3,7 +3,7 @@
 <button class="btn" (click)="editWidth()">editWidth</button>
 <div class="iframe-container">
   <ng-container *ngFor="let item of iframeListing">
-    <div class="iframes" [innerHTML]="item">
+    <div class="iframes" [innerHTML]="item" (mouseup)="endDrag($event)">
     </div>
   </ng-container>
 </div>

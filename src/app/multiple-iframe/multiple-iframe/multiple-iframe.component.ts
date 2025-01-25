@@ -93,6 +93,14 @@ export class MultipleIframeComponent implements OnInit, OnDestroy {
     return arr.join(' ');
   }
 
+  endDrag(e:MouseEvent){
+    if (e.target) {
+      let elem = (e.target as HTMLElement);
+      elem.getElementsByTagName('iframe')[0].height = elem.offsetHeight.toString();
+      elem.getElementsByTagName('iframe')[0].width = elem.offsetWidth.toString();
+    }
+  }
+
   ngOnDestroy(): void {
     console.log('mulipleIframe Destroy');
   }

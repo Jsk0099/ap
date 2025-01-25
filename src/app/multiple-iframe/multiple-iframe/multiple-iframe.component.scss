@@ -37,4 +37,9 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
     gap:5px;
+
+    .iframes{
+        resize: both;
+        overflow: hidden;
+    }
 }
