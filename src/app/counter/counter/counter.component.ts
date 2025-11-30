@@ -18,6 +18,7 @@ export class CounterComponent implements OnInit, OnDestroy {
   isFullScreen = false;
   isResume = false;
   configData: any = {};
+  isCounterShow = false;
 
   constructor(private localStorageService:LocalStorageService, private common:CommonService, private dialog:MatDialog){ 
     this.isTouchDevice = this.common.isTouchDevice();
@@ -41,6 +42,10 @@ export class CounterComponent implements OnInit, OnDestroy {
       document.getElementById('fullscreen-ele')?.requestFullscreen();
       this.isFullScreen = true;
     }
+  }
+
+  showHideCounter(){
+    this.isCounterShow = !this.isCounterShow;
   }
 
   ngOnDestroy(){
