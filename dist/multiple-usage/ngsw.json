@@ -1,0 +1,83 @@
+{
+  "configVersion": 1,
+  "timestamp": 1767549077412,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/310.8650bfbb085e5e01.js",
+        "/315.8e886d0d39848e76.js",
+        "/347.27121b78f3133201.js",
+        "/index.html",
+        "/main.6405ccc801be259f.js",
+        "/manifest.webmanifest",
+        "/polyfills.44a068f0fc8ac738.js",
+        "/runtime.a4d26eab396ce82d.js",
+        "/styles.2e19c1028b225363.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/assets/android-chrome-192x192.png",
+        "/assets/android-chrome-512x512.png",
+        "/assets/apple-touch-icon.png",
+        "/assets/audios/bell.mp3",
+        "/assets/favicon-16x16.png",
+        "/assets/favicon-32x32.png",
+        "/assets/favicon.ico"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/310.8650bfbb085e5e01.js": "96535ee0e346abb35bc39b5986b7bbdf58a4306c",
+    "/315.8e886d0d39848e76.js": "99b46288d225ccb47daa1ac50720cdcac5c04a5c",
+    "/347.27121b78f3133201.js": "583aa659d948547a963a8490fe8953a4324b250e",
+    "/assets/android-chrome-192x192.png": "6773e500991f0820cc9ded5b10f810a90a098d0e",
+    "/assets/android-chrome-512x512.png": "660a32406a4f87f738be26d528ec1afe9af5ded5",
+    "/assets/apple-touch-icon.png": "c59de3e238dd74094969c2f85046014b8660722f",
+    "/assets/audios/bell.mp3": "dc7ec0b0fa62567eba20eb65e12b0fae0252c9a2",
+    "/assets/favicon-16x16.png": "29d06d49caaeff848b7e15ab52014ff4ca457cf0",
+    "/assets/favicon-32x32.png": "188ed7f70759683bc12adbe51a9534dd5e55b8e8",
+    "/assets/favicon.ico": "ee9ea68ae70414768728ee467e46f0cb44950e34",
+    "/index.html": "d9bc79e4d1320ef1a66e00f0460de6ad769a9d1f",
+    "/main.6405ccc801be259f.js": "2fae20a29c8d5758f6056f8a972fe72e1471229d",
+    "/manifest.webmanifest": "f60b065209a2121943a23ac8045706e2e98b20c8",
+    "/polyfills.44a068f0fc8ac738.js": "30326e4fb9ce57713dc3feab5cf8004f6ef15626",
+    "/runtime.a4d26eab396ce82d.js": "a02f3dcf425244732e31c269d2d1646bca87696a",
+    "/styles.2e19c1028b225363.css": "6b10596b48bd0a45daa9f3497e08ab92de59930c"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
