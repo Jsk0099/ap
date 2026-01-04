@@ -1,8 +1,10 @@
-<div class="navBarToggle" onclick="navToggle()">
 <div class="nav-container" *ngIf="navigationList.length">
     <ul>
       <li *ngFor="let item of navigationList;let i=index">
         <button href='#' class="nav-btn" [id]="item.id" (click)="navigate(item.path,$event)">{{ item.displayName }}</button>
+      </li>
+      <li>
+        <i [title]="isDarkMode ? 'Light Mode' : 'Dark Mode'" class="nav-btn fa-solid " [ngClass]="{'fa-moon': !isDarkMode, 'fa-cloud-sun': isDarkMode}" (click)="toggleMode()"></i>
       </li>
     </ul>
   </div>

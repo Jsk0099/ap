@@ -28,6 +28,9 @@ export class CounterComponent implements OnInit, OnDestroy {
       this.counter = parseInt(this.localStorageService.getData('counter') as string);
       this.isResume = true;
     }
+    let isCountShow = this.localStorageService.getData('isCounterShow') as unknown as boolean;
+    if(isCountShow == undefined) { this.localStorageService.setData('isCounterShow', true); }
+    this.isCounterShow = (isCountShow == undefined ? true : isCountShow);
    }
 
   ngOnInit(){
@@ -46,6 +49,7 @@ export class CounterComponent implements OnInit, OnDestroy {
 
   showHideCounter(){
     this.isCounterShow = !this.isCounterShow;
+    this.localStorageService.setData('isCounterShow', this.isCounterShow);
   }
 
   ngOnDestroy(){

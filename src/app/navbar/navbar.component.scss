@@ -32,4 +32,9 @@ li{
 
     }
 
+    &:last-child {
+        float: right;
+        color: white;
+    }
+
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {  Router } from '@angular/router';
+import { LocalStorageService } from '../shared/services/local-storage.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,12 +9,17 @@ import {  Router } from '@angular/router';
 })
 export class NavbarComponent {
 
-  navigationList:any;  
+  navigationList:any; 
+  isDarkMode = false; 
   
-  constructor(private router:Router){ }
+  constructor(private router:Router, private locationService: LocalStorageService){ 
+    this.isDarkMode = !!(locationService.getData('themeMode') == 'dark');
+    if(this.isDarkMode){
+      document.body.classList.add('dark-theme');
+    }
+  }
 
   ngOnInit(){
-    console.log('Nav Load');
     this.navigationList = [
       {displayName:'Dashboard',id:'dashboard',path:'dashboard'},
       {displayName:'Multiple Iframes',id:'multiple-iframe',path:'multiple-iframe'},
@@ -33,6 +39,12 @@ export class NavbarComponent {
     predElem.classList.remove('active');
     i.target.classList.add('active');
     this.router.navigate([`${path}`]);
+  }
+
+  toggleMode() {
+    this.isDarkMode = !this.isDarkMode;
+    document.body.classList.toggle('dark-theme');
+    this.locationService.setData('themeMode', this.isDarkMode ? 'dark' : 'light');
   }
 
 }

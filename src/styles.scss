@@ -1,7 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
+
+/* Light theme (default) */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #121212;
+    --card-bg: #f5f5f5;
+}
+
+/* Dark theme */
+.dark-theme {
+    --bg-color: #121212;
+    --text-color: #ffffff;
+    --card-bg: #1e1e1e;
+}
+
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+    background: var(--bg-color) !important; 
+    color: var(--text-color) !important; 
+}
 
 .btn{
     cursor: pointer;
