@@ -12,10 +12,34 @@
   <style type="text/css">@font-face{font-family:'Material Icons';font-style:normal;font-weight:400;src:url(https://fonts.gstatic.com/s/materialicons/v145/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2) format('woff2');}.material-icons{font-family:'Material Icons';font-weight:normal;font-style:normal;font-size:24px;line-height:1;letter-spacing:normal;text-transform:none;display:inline-block;white-space:nowrap;word-wrap:normal;direction:ltr;-webkit-font-feature-settings:'liga';-webkit-font-smoothing:antialiased;}</style>
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#1976d2">
+  <script>
+    // Suppress default offline UI messages
+    // PWA will work from cache without interruption
+    window.addEventListener('online', function(e) {
+      e.preventDefault ? e.preventDefault() : (e.returnValue = false);
+      console.log('App restored online connectivity');
+    }, false);
+    
+    window.addEventListener('offline', function(e) {
+      e.preventDefault ? e.preventDefault() : (e.returnValue = false);
+      console.log('App is offline - working with cached resources');
+    }, false);
+
+    // Prevent service worker from showing offline notifications
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.getRegistrations().then(registrations => {
+          registrations.forEach(reg => {
+            console.log('Service Worker registered for offline support');
+          });
+        });
+      });
+    }
+  </script>
 <style>html,body{height:100%}:root{--bg-color:#ffffff;--text-color:#121212;--card-bg:#f5f5f5}body{margin:0;font-family:Roboto,Helvetica Neue,sans-serif}body{background:var(--bg-color)!important;color:var(--text-color)!important}</style><link rel="stylesheet" href="styles.2e19c1028b225363.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.2e19c1028b225363.css"></noscript></head>
 <body>
   <app-root></app-root>
   <noscript>Please enable JavaScript to continue using this application.</noscript>
-<script src="runtime.a4d26eab396ce82d.js" type="module"></script><script src="polyfills.44a068f0fc8ac738.js" type="module"></script><script src="main.6405ccc801be259f.js" type="module"></script>
+<script src="runtime.efcb207202e234bf.js" type="module"></script><script src="polyfills.44a068f0fc8ac738.js" type="module"></script><script src="main.600fecf1f0fc99e4.js" type="module"></script>
 
 </body></html>

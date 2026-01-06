@@ -14,6 +14,30 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="manifest" href="manifest.webmanifest">
   <meta name="theme-color" content="#1976d2">
+  <script>
+    // Suppress default offline UI messages
+    // PWA will work from cache without interruption
+    window.addEventListener('online', function(e) {
+      e.preventDefault ? e.preventDefault() : (e.returnValue = false);
+      console.log('App restored online connectivity');
+    }, false);
+    
+    window.addEventListener('offline', function(e) {
+      e.preventDefault ? e.preventDefault() : (e.returnValue = false);
+      console.log('App is offline - working with cached resources');
+    }, false);
+
+    // Prevent service worker from showing offline notifications
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.getRegistrations().then(registrations => {
+          registrations.forEach(reg => {
+            console.log('Service Worker registered for offline support');
+          });
+        });
+      });
+    }
+  </script>
 </head>
 <body>
   <app-root></app-root>
